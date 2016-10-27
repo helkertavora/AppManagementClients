@@ -1,0 +1,118 @@
+package br.com.unifor.sgc.managed;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import br.com.unifor.sgc.model.Cliente;
+import br.com.unifor.sgc.model.UF;
+@SessionScoped
+@ManagedBean(name="ufMB")
+public class UFMB extends AbstractMB {
+	private UF uf;
+	private List<UF> listagemResultadoBusca;
+	
+	public void limpar() {
+		uf = new UF();
+		listagemResultadoBusca = new ArrayList<UF>();
+		total = 0;		
+	}
+		
+	public UFMB() {
+		limpar();
+	}
+ 
+ 	public String init() {
+ 		limpar();
+		return "/paginas/uf/UF.xhtml?faces-redirect=true";
+	}
+	
+ 	 	
+ 	    //Pessistencia
+ 		
+ 	public String salvar() {
+ 			try {
+ 					listagemResultadoBusca.add(uf); 					
+ 					this.consultar();				
+ 					uf = new UF();
+ 					addInfoMessage("Operação efetuada com sucesso.");			    
+ 			} catch (Exception e) {
+ 				e.printStackTrace();
+ 				addErrorMessage(e.getMessage());
+ 			}
+ 			return "/paginas/uf/UF.xhtml?faces-redirect=true";
+ 	}
+ 		
+ 		
+	public String atualizar() {
+		try {			
+			this.consultar();
+			uf = new UF();
+			addInfoMessage("Operação efetuada com sucesso.");
+			return "/paginas/uf/UF.xhtml?faces-redirect=true";						
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+			return null;
+		}
+	}
+
+	public String  excluir() {
+		try {
+			listagemResultadoBusca.remove(uf); 	
+			this.consultar();
+			uf = new UF();
+			addInfoMessage("Operação efetuada com sucesso.");			
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+		}
+		return null;
+	}
+	
+	
+	public String consultar() {		
+		total = listagemResultadoBusca.size();
+		if (total == 0) {
+			addInfoMessage("Nenhum Registro foi localizado.");
+		}		
+		return null;
+	}	
+	
+	
+	public String incluir() {
+		uf = new UF();		
+		return "/paginas/uf/UFIncluir.xhtml?faces-redirect=true";
+	}	
+   
+	public String editar() {
+		return "/paginas/uf/UFEditar.xhtml?faces-redirect=true";
+	}
+
+	public String cancelar() {
+		return "/paginas/uf/UF.xhtml?faces-redirect=true";
+	}
+		
+   	// gets e setters
+		
+	public List<UF> getListagemResultadoBusca() {
+		return listagemResultadoBusca;
+	}
+
+	
+	public UF getUf() {
+		return uf;
+	}
+
+	public void setUf(UF uf) {
+		this.uf = uf;
+	}
+	
+	public void setListagemResultadoBusca(List<UF> listagemResultadoBusca) {
+		this.listagemResultadoBusca = listagemResultadoBusca;
+	}	
+
+}

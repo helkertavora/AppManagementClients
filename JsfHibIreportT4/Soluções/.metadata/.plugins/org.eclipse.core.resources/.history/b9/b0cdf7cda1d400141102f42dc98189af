@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13919734799600" configfile="/SGC/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14274751861990" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14274751861991 pf14274751861992 pf14274751861993" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioConsultar.xhtml" id="pf14274751861994" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14274751861991" path="/paginas/municipio/MunicipioConsultar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioIncluir.xhtml" id="pf14274751861995" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14274751861992" path="/paginas/municipio/MunicipioIncluir.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioEditar.xhtml" id="pf14274751861996" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14274751861993" path="/paginas/municipio/MunicipioEditar.xhtml"/>
+  <links id="pf14274751861991" target="pf14274751861994" source="pf14274751861990" outcome="menuMunicipio"/>
+  <links id="pf14274751861992" target="pf14274751861995" source="pf14274751861990" outcome="novaMunicipio"/>
+  <links id="pf14274751861993" target="pf14274751861996" source="pf14274751861990" outcome="editarMunicipio"/>
+</pageflow:Pageflow>

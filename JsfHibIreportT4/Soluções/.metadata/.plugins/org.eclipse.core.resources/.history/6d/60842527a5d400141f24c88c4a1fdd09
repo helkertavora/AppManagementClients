@@ -1,0 +1,134 @@
+package br.com.unifor.sgc.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+
+public class Cliente extends AbstractModel<Integer> {
+
+	private Integer id;
+	
+	
+	private String nome;
+	
+	
+	private String endereco;
+		
+	
+	private String observacao;
+	
+	private Date dataNascimento;
+	
+	
+	private Integer estadoCivil;
+    
+	private Integer municipio;
+	
+	private Integer uf;
+	
+	public Cliente() { 
+
+	} 
+
+	public Cliente(Integer id, String nome) { 
+		this.id = id; 
+		this.nome = nome; 
+	} 
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Integer getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(Integer estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	public Integer getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Integer municipio) {
+		this.municipio = municipio;
+	}
+
+	public Integer getUf() {
+		return uf;
+	}
+
+	public void setUf(Integer uf) {
+		this.uf = uf;
+	}
+
+	public String getDscEstadoCivil() {
+		String retorno = null;
+		switch (this.estadoCivil) {
+		case 2:
+			retorno = "Casado";
+			break;
+		case 3:
+			retorno = "Divorciado";
+			break;
+		default:
+			retorno = "Solteiro";
+			break;
+		}
+		return retorno;
+	}	
+	     
+}

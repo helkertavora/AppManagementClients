@@ -1,0 +1,122 @@
+package br.com.unifor.sgc.managed;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import br.com.unifor.sgc.model.Lazer;
+
+@SessionScoped
+@ManagedBean(name="lazerMB")
+public class LazerMB extends AbstractMB {
+	
+	
+	private Lazer lazer;
+	private List<Lazer> listagemResultadoBusca;
+		
+	public LazerMB() {
+		lazer = new Lazer();
+		listagemResultadoBusca = new ArrayList<Lazer>();
+		total = 0;		
+	}
+ 
+ 	public String init() {
+		lazer = new Lazer();
+		listagemResultadoBusca = new ArrayList<Lazer>();
+		total = 0;
+		return "/paginas/lazer/Lazer.xhtml?faces-redirect=true";
+	}
+	 
+ 	public void limpar() {
+		lazer = new Lazer();
+		listagemResultadoBusca = new ArrayList<Lazer>();
+		total = 0;		
+	}
+	
+ 	
+	//Pessistencia
+	public String salvar() {
+		try {
+			    listagemResultadoBusca.add(lazer);
+				this.consultar();		
+				lazer = new Lazer();
+				addInfoMessage("Operação efetuada com sucesso.");			    
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+		}
+		return "/paginas/lazer/Lazer.xhtml?faces-redirect=true";
+	}
+
+	public String atualizar() {
+		try {			
+			this.consultar();
+			lazer = new Lazer();
+			addInfoMessage("Operação efetuada com sucesso.");
+			return "/paginas/lazer/Lazer.xhtml?faces-redirect=true";
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+			return null;
+		}
+	}
+
+	public String  excluir() {
+		try {
+			listagemResultadoBusca.remove(lazer);
+			this.consultar();
+			lazer = new Lazer();
+			addInfoMessage("Operação efetuada com sucesso.");			
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+		}
+		return null;
+	}
+	
+	public String consultar() {
+		total = listagemResultadoBusca.size();
+		if (total == 0) {
+			addInfoMessage("Nenhum Registro foi localizado.");
+		}
+		lazer = new Lazer();
+		return null;
+	}	
+	
+	//Navegação
+	
+	public String incluir() {
+		lazer = new Lazer();		
+		return "/paginas/lazer/LazerIncluir.xhtml?faces-redirect=true";
+	}	
+   
+	public String editar() {
+		return "/paginas/lazer/LazerEditar.xhtml?faces-redirect=true";
+	}
+
+	public String cancelar() {
+		return "/paginas/lazer/Lazer.xhtml?faces-redirect=true";
+	}
+	
+	// gets e setters
+		
+	public List<Lazer> getListagemResultadoBusca() {
+		return listagemResultadoBusca;
+	}
+
+	public Lazer getLazer() {
+		return lazer;
+	}
+
+	public void setLazer(Lazer lazer) {
+		this.lazer = lazer;
+	}
+	
+	public void setListagemResultadoBusca(List<Lazer> listagemResultadoBusca) {
+		this.listagemResultadoBusca = listagemResultadoBusca;
+	}	
+
+}

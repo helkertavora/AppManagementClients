@@ -1,0 +1,133 @@
+package br.com.unifor.sgc.managed;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import br.com.unifor.sgc.model.Cliente;
+
+
+@SessionScoped
+@ManagedBean(name="clienteMB")
+public class ClienteMB extends AbstractMB {
+	
+	
+	private Cliente cliente;
+	private List<Cliente> listagemResultadoBusca;
+	
+	
+	public ClienteMB() {
+		cliente = new Cliente();
+		listagemResultadoBusca = new ArrayList<Cliente>();
+		total = 0;		
+	}
+ 
+ 	public String init() {
+		cliente = new Cliente();
+		listagemResultadoBusca = new ArrayList<Cliente>();
+		total = 0;
+		return "sucesso";
+	}
+	
+ 	public void limpar() {
+		cliente = new Cliente();
+		listagemResultadoBusca = new ArrayList<Cliente>();
+		total = 0;		
+	}
+	
+ 	
+	//Pessistencia
+	public String salvar() {
+		try {
+				listagemResultadoBusca.add(cliente);
+				cliente = new Cliente();
+				this.consultar();	
+				addInfoMessage("Operação efetuada com sucesso.");			    
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+		}
+		return "sucesso";
+	}
+
+	public String atualizar() {
+		try {		
+			cliente = new Cliente();
+			this.consultar();	
+			addInfoMessage("Operação efetuada com sucesso.");
+			return "sucesso";
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+			return null;
+		}
+	}
+
+	public String  excluir() {
+		try {
+			listagemResultadoBusca.remove(cliente);
+			this.consultar();		
+			listagemResultadoBusca.remove(cliente);
+			cliente = new Cliente();
+			addInfoMessage("Operação efetuada com sucesso.");			
+		} catch (Exception e) {
+			e.printStackTrace();
+			addErrorMessage(e.getMessage());
+		}
+		return null;
+	}
+	
+	public String consultar() {
+		total = listagemResultadoBusca.size();
+		if (total == 0) {
+			addInfoMessage("Nenhum Registro foi localizado.");
+		}		
+		return null;
+	}	
+	
+	public String incluir() {
+		cliente = new Cliente();
+		return "sucesso";
+	}	
+   
+	public String editar() {
+		return "/paginas/cliente/ClienteEditar.xhtml?faces-redirect=true";
+	}
+
+	public String cancelar() {
+		return "/paginas/cliente/Cliente.xhtml?faces-redirect=true";
+	}
+		
+	// gets e setters
+		
+	public List<Cliente> getListagemResultadoBusca() {
+		return listagemResultadoBusca;
+	}
+
+	
+	public Cliente getcliente() {
+		return cliente;
+	}
+
+	public void setcliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	public void setListagemResultadoBusca(List<Cliente> listagemResultadoBusca) {
+		this.listagemResultadoBusca = listagemResultadoBusca;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	
+
+}

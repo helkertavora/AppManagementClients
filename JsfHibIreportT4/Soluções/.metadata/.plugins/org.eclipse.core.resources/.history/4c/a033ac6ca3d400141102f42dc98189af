@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13919734799600" configfile="/SGC/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf142747580471511" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf142747580471512" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/piscicultura.xhtml" id="pf142747580471513" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf142747580471512" path="/paginas/piscicultura.xhtml"/>
+  <links id="pf142747580471512" target="pf142747580471513" source="pf142747580471511" outcome="sucesso" redirect="true" fromaction="#{pisciculturaBean.inicializacao}"/>
+</pageflow:Pageflow>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13919734799600" configfile="/SGC/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf142747590959114" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf142747590959115 pf142747590959116 pf142747590959117 pf142747590959118 pf142747590959119 pf142747590959120" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/cliente/ClienteConsultar.xhtml" id="pf142747590959121" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf142747590959115" path="/paginas/cliente/ClienteConsultar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/cliente/ClienteIncluir.xhtml" id="pf142747590959122" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf142747590959116" path="/paginas/cliente/ClienteIncluir.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/cliente/ClienteEditar.xhtml" id="pf142747590959123" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf142747590959117" path="/paginas/cliente/ClienteEditar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioConsultar.xhtml" id="pf142747590959124" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf142747590959118" path="/paginas/municipio/MunicipioConsultar.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioIncluir.xhtml" id="pf142747590959125" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf142747590959119" path="/paginas/municipio/MunicipioIncluir.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/municipio/MunicipioEditar.xhtml" id="pf142747590959126" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf142747590959120" path="/paginas/municipio/MunicipioEditar.xhtml"/>
+  <links id="pf142747590959115" target="pf142747590959121" source="pf142747590959114" outcome="sucesso" redirect="true" fromaction="#{clienteMB.init}"/>
+  <links id="pf142747590959116" target="pf142747590959122" source="pf142747590959114" outcome="sucesso" fromaction="#{clienteMB.inicializacao}"/>
+  <links id="pf142747590959117" target="pf142747590959123" source="pf142747590959114" outcome="sucesso" fromaction="#{clienteMB.inicializacao}"/>
+  <links id="pf142747590959118" target="pf142747590959124" source="pf142747590959114" outcome="menuMunicipio"/>
+  <links id="pf142747590959119" target="pf142747590959125" source="pf142747590959114" outcome="novoMunicipio"/>
+  <links id="pf142747590959120" target="pf142747590959126" source="pf142747590959114" outcome="editarMunicipio"/>
+</pageflow:Pageflow>

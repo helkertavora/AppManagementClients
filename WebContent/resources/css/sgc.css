@@ -1,0 +1,15 @@
+.bandeiraBrasilx,.bandeiraUSAx {
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	font-size: 0.9em;
+	float: left;
+	margin: 15px 10px 0 0;
+}
+
+.bandeiraBrasilx {
+	background-image: url("../resources/imagens/pt_BR.jpg");
+}
+
+.bandeiraUSAx {
+	background-image: url("../resources/imagens/en_US.jpg");
+}

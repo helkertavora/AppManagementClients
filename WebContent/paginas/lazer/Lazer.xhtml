@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:ui="http://java.sun.com/jsf/facelets" 
+	  xmlns:h="http://java.sun.com/jsf/html" 
+	  xmlns:f="http://java.sun.com/jsf/core" 
+	  xmlns:p="http://primefaces.org/ui">
+	  
+<ui:composition template="/templates/template.xhtml">
+<ui:define name="title"><p:outputLabel value="#{msg.lazer}"/></ui:define>
+	<ui:define name="context"> 
+		<h:form>
+	    	<p:panel align="center">
+	    	    <div align="center">
+	    			<p:outputLabel value="#{msg.listarLazer}"></p:outputLabel>
+			 	</div>
+			  	<div align="center">
+		    	<p:panelGrid columns="2" align="center" >		        
+		         	<p:outputLabel value="#{msg.codigo}"></p:outputLabel>
+				    <p:inputText value="#{lazerMB.lazer.id}" size="50" maxlength="10"></p:inputText> 
+					<p:outputLabel value="#{msg.descricao}"></p:outputLabel>
+					<p:inputText value="#{lazerMB.lazer.descricao}" size="50" maxlength="50"></p:inputText> 
+				</p:panelGrid>
+	            </div>
+	            <div align="center">
+	            	<p:panelGrid columns="3">	
+						<p:commandButton value="#{msg.consultar}" ajax="false" action="#{lazerMB.consultar}"
+				     	rendered = "#{lazerMB.acesso}"
+				     	update="listaDeLazer"/>
+						<p:commandButton type="reset" value="#{msg.limpar}" ajax="false"/>    
+						<p:commandButton value="#{msg.incluir}" rendered = "#{lazerMB.acesso}" action="#{lazerMB.incluir}"/> 
+				    </p:panelGrid>
+			     </div>      
+			     <p></p>
+				 <p:dataTable value="#{lazerMB.listagemResultadoBusca}" rows="20" var="lazer"
+					id="listaDeLazer" align="center" width="80%" rendered="true" paginator="true">
+					<p:column width="30">
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.codigo}"></p:outputLabel>
+						</f:facet>
+						<p:outputLabel value="#{lazer.id}"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.descricao}"></p:outputLabel>
+						</f:facet>
+						<p:outputLabel value="#{lazer.descricao}"></p:outputLabel>
+					</p:column>
+					<p:column width="30">
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.editar}"></p:outputLabel>
+						</f:facet>
+			    		<p:commandButton  value="#{msg.editar}"  rendered = "#{lazerMB.acesso}" action="#{lazerMB.editar}">
+					 		<f:setPropertyActionListener value="#{lazer}" target="#{lazerMB.lazer}"/>
+						</p:commandButton>
+					</p:column>
+					<p:column width="30">
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.excluir}"></p:outputLabel>
+						</f:facet>
+			    		<p:commandButton value="#{msg.excluir}" action="#{lazerMB.excluir}" 
+						onclick="return confirm('Confirmar exclusao?');" rendered = "#{lazerMB.acesso}">
+							<f:setPropertyActionListener value="#{lazer}" target="#{lazerMB.lazer}" />				
+						</p:commandButton>
+					</p:column>
+			</p:dataTable>
+		 </p:panel>	
+		 <div align="left">
+		    <p:outputLabel value="#{lazerMB.rodapePag}"></p:outputLabel>
+		</div>			 
+		</h:form>		
+	</ui:define>
+</ui:composition>
+</html>

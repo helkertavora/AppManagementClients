@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    <navigation-rule>
+    	<from-view-id>*</from-view-id>
+    	<navigation-case>
+  			<from-action>#{clienteMB.init}</from-action>
+  			<from-outcome>sucesso</from-outcome>
+      		<to-view-id>/paginas/cliente/ClienteConsultar.xhtml</to-view-id>
+      		<redirect />
+  		</navigation-case>
+  		<navigation-case>
+  			<from-action>#{clienteMB.salvar}</from-action>
+  			<from-outcome>sucesso</from-outcome>
+      		<to-view-id>/paginas/cliente/ClienteConsultar.xhtml</to-view-id>
+      		<redirect />
+  		</navigation-case>
+  		<navigation-case>
+  			<from-action>#{clienteMB.atualizar}</from-action>
+  			<from-outcome>sucesso</from-outcome>
+      		<to-view-id>/paginas/cliente/ClienteConsultar.xhtml</to-view-id>
+      		<redirect />
+  		</navigation-case>
+  		<navigation-case>
+   			<from-action>#{clienteMB.incluir}</from-action>
+  			<from-outcome>sucesso</from-outcome>
+   			<to-view-id>/paginas/cliente/ClienteIncluir.xhtml</to-view-id>
+  		</navigation-case>
+  		<navigation-case>
+   			<from-action>#{clienteMB.editar}</from-action>
+  			<from-outcome>sucesso</from-outcome>
+   			<to-view-id>/paginas/cliente/ClienteEditar.xhtml</to-view-id>
+  		</navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+  		<from-view-id>*</from-view-id>
+  		<navigation-case>
+   			<from-outcome>menuMunicipio</from-outcome>
+   			<to-view-id>/paginas/municipio/MunicipioConsultar.xhtml</to-view-id>
+  		</navigation-case>
+ 	</navigation-rule>
+ 	<navigation-rule>
+ 	    <from-view-id>*</from-view-id>
+  		<navigation-case>
+   			<from-outcome>novoMunicipio</from-outcome>
+   			<to-view-id>/paginas/municipio/MunicipioIncluir.xhtml</to-view-id>
+  		</navigation-case>
+ 	</navigation-rule>
+ 	<navigation-rule>
+ 	    <from-view-id>*</from-view-id>
+  		<navigation-case>
+   			<from-outcome>editarMunicipio</from-outcome>
+   			<to-view-id>/paginas/municipio/MunicipioEditar.xhtml</to-view-id>
+  		</navigation-case>
+ 	</navigation-rule> 
+    <application>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var> 
+		</resource-bundle>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+			<supported-locale>en_US</supported-locale>
+		</locale-config>
+		<message-bundle>messages</message-bundle>
+	</application>
+</faces-config>
